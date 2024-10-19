@@ -4,3 +4,4 @@
 15;Maria Lopez;85274196;maria.lopez@example.com;100
 16;Josue Carias;53306996;Josue@gmail.com;1000
 17;Ricardo;46578396;ricardo@yahoo.com;900
+17;juan perez;1235698;juan@oulouk;1000

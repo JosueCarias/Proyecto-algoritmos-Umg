@@ -14,19 +14,46 @@ string CTASMONETARIAS = "CTASMONETARIAS.txt";
 string TRANSACCIONES = "TRANSACCIONES.txt";
 string TEMP = "TEMP.txt";
 
+// Códigos ANSI para colores del menu
+#define RESET   "\033[0m"
+#define RED     "\033[31m"      // Rojo
+#define GREEN   "\033[32m"      // Verde
+#define YELLOW  "\033[33m"      // Amarillo
+#define BLUE    "\033[34m"      // Azul
+#define MAGENTA "\033[35m"      // Magenta
+#define CYAN    "\033[36m"      // Cian
+#define WHITE   "\033[37m"      // Blanco
+
+// Función para centrar el texto
+void MensajeCentrado(const string &text) {
+    int width = 80; 
+    int padding = (width - text.length()) / 2;
+    for (int i = 0; i < padding; ++i) cout << " ";
+    cout << text << endl;
+}
+
 
 // Función para mostrar el menú
 char menu() {
     char opcion = 0;
-    cout << "--------------------------------------" << endl;
-    cout << "Ingrese la opcion\n";
-    cout << "1). Crear cuentas monetarias\n";
-    cout << "2). Operar depositos\n";
-    cout << "3). Operar retiros\n";
-    cout << "4). Transferencias\n";
-    cout << "5). Consulta saldo de cuenta\n";
-    cout << "6). Salir\n";
-    cout << "--------------------------------------" << endl;
+    MensajeCentrado(BLUE "*********************************************" RESET);
+    MensajeCentrado(BLUE "*                                            *" RESET);
+    MensajeCentrado(YELLOW "*           BIENVENIDO AL SISTEMA            *" RESET);
+    MensajeCentrado(BLUE "*                                            *" RESET);
+    MensajeCentrado(BLUE "**********************************************" RESET);
+    MensajeCentrado(BLUE "*                                            *" RESET);
+    MensajeCentrado(CYAN "*          Por favor, ingrese la opción      *" RESET);
+    MensajeCentrado(BLUE "*                                            *" RESET);
+    MensajeCentrado(BLUE "**********************************************" RESET);
+    MensajeCentrado(BLUE "*                                            *" RESET);
+    MensajeCentrado(GREEN "* 1). Crear cuentas monetarias               *" RESET);
+    MensajeCentrado(GREEN "* 2). Operar depositos                       *" RESET);
+    MensajeCentrado(GREEN "* 3). Operar retiros                         *" RESET);
+    MensajeCentrado(GREEN "* 4). Transferencias                         *" RESET);
+    MensajeCentrado(GREEN "* 5). Consulta saldo de cuenta               *" RESET);
+    MensajeCentrado(RED   "* 6). Salir                                  *" RESET);
+    MensajeCentrado(BLUE "*                                            *" RESET);
+    MensajeCentrado(BLUE "**********************************************" RESET);
     cin >> opcion;
     return opcion;
 }
@@ -368,42 +395,139 @@ string consultaSaldo() {
 
 // Función principal con ciclo para mostrar el menú
 int main() {
-    char opcion;
+    char opcion;      // Variable para entrar a los apartados del menu o switch
+    string CCMD;     // Variable para repetir la funcion de crear cuenta monetaria en el menu o switch
+    string OPD;     // Variable para repetir la funcion de Operar depositos en el menu o switch
+    string ORD;    // Variable para repetir la funcion de Operar retiros en el menu o switch
+    string TD;    // Variable para repetir la funcion de Transferencias en el menu o switch
+    string CSCD; // Variable para repetir la funcion de Consultar saldo de cuenta en el menu o switch 
+    
     do {
         opcion = menu();
         switch (opcion) {
             case '1':
-                cout << "Has seleccionado: Crear cuentas monetarias" << endl;
-                cout << crearCuentaMonetaria() << endl;
-                cout << "--------------------------------------" << endl;
+                do {
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*   Ha Seleccionado Crear Cuenta Monetaria   *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    cout << crearCuentaMonetaria() << endl;
+                    MensajeCentrado(RED "----------------------------------------------" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*     ¿Desea hacer otra cuenta monetaria?    *" RESET);
+                    MensajeCentrado(YELLOW "*                    Si/No:                  *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    cin >> CCMD;
+                } while (CCMD == "Si" || CCMD == "si");
                 break;
             case '2':
-                cout << "Has seleccionado: Operar depositos" << endl;
-                cout << depositos() << endl;
-                cout << "--------------------------------------" << endl;
+                do {
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*       Ha Seleccionado Operar depositos     *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    cout << depositos() << endl;
+                    MensajeCentrado(RED "----------------------------------------------" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*          ¿Desea Operar otro deposito?      *" RESET);
+                    MensajeCentrado(YELLOW "*                    Si/No:                  *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    cin >> OPD;
+                } while (OPD == "Si" || OPD == "si");
                 break;
             case '3':
-                cout << "Has seleccionado: Operar retiros" << endl;
-                cout << retiros() << endl;
-                cout << "--------------------------------------" << endl;
+                do {
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*       Ha Seleccionado Operar retiros       *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    cout << retiros() << endl;
+                    MensajeCentrado(RED "----------------------------------------------" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*           ¿Desea Operar otro retiro?       *" RESET);
+                    MensajeCentrado(YELLOW "*                    Si/No:                  *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    cin >> ORD;
+                } while (ORD == "Si" || ORD == "si");
                 break;
             case '4':
-                cout << "Has seleccionado: Transferencias" << endl;
-                cout << transferencias() << endl;
-                cout << "--------------------------------------" << endl;
+                do {
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*       Ha Seleccionado Transferencias       *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    cout << transferencias() << endl;
+                    MensajeCentrado(RED "----------------------------------------------" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*        ¿Desea hacer otra Transferencia?    *" RESET);
+                    MensajeCentrado(YELLOW "*                    Si/No:                  *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    cin >> TD;
+                } while (TD == "Si" || TD == "si");
                 break;
             case '5':
-                cout << "Has seleccionado: Consulta saldo de cuenta" << endl;
-                cout << consultaSaldo() << endl;
-                cout << "--------------------------------------" << endl;
+                do {
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                 Ha seleccionado            *" RESET);
+                    MensajeCentrado(GREEN "*           Consulta Saldo de Cuenta         *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "*                                            *" RESET);
+                    MensajeCentrado(GREEN "**********************************************" RESET);
+                    cout << consultaSaldo() << endl;
+                    MensajeCentrado(RED "----------------------------------------------" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "*        ¿Desea Consultar saldo de nuevo?    *" RESET);
+                    MensajeCentrado(YELLOW "*                    Si/No:                  *" RESET);
+                    MensajeCentrado(YELLOW "*                                            *" RESET);
+                    MensajeCentrado(YELLOW "**********************************************" RESET);
+                    cin >> CSCD;
+                } while (CSCD == "Si" || CSCD == "si");
                 break;
             case '6':
-                cout << "Saliendo del programa..." << endl;
-                cout << "--------------------------------------" << endl;
+                MensajeCentrado(GREEN "**********************************************" RESET);
+                MensajeCentrado(GREEN "*                                            *" RESET);
+                MensajeCentrado(GREEN "*                                            *" RESET);
+                MensajeCentrado(GREEN "*             Saliendo del programa          *" RESET);
+                MensajeCentrado(GREEN "*--------------------------------------------*" RESET);
+                MensajeCentrado(GREEN "*                                            *" RESET);
+                MensajeCentrado(GREEN "**********************************************" RESET);
                 break;
             default:
-                cout << "Opcion no valida, por favor intente nuevamente." << endl;
-                cout << "--------------------------------------" << endl;
+                MensajeCentrado(RED "**********************************************" RESET);
+                MensajeCentrado(RED "*                                            *" RESET);
+                MensajeCentrado(RED "*                                            *" RESET);
+                MensajeCentrado(RED "*               Opcion no valida             *" RESET);
+                MensajeCentrado(RED "*             !Intente Nuevamente!           *" RESET);
+                MensajeCentrado(RED "*                                            *" RESET);
+                MensajeCentrado(RED "**********************************************" RESET);
         }
     } while (opcion != '6');
     return 0;
